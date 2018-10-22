@@ -15,13 +15,17 @@ if (isset($_POST['Submit1'])){
 	$email = $_POST['email'];
 	$passW = $_POST['pass'];
 	$date1 = $_POST['date1'];
+	$_POST['membertest'] = 'membertest';
+
 
 	$database = $_POST['membertest'];
-	$db_found = new mysqli (DB_SERVER, DB_USER, DB_PASS, $database);
+	$db_found = new mysqli (DB_SERVER, DB_USER, DB_PASS, $_POST['membertest']);
 
 	if ($db_found) {
-		$SQL = $db_found->prepare("INSERT INTO members (username, password,email, date1) VALUES(?, ?, ?, ?)");
-		$SQL->bind_param('ssss', $uName, $passW, $email, $date1);
+		$SQL = $db_found->prepare("INSERT INTO members (username, password,email,date) VALUES(?, ?, ?, ?)");
+		$SQL->bind_param("ssss", $uName, $passW, $email, $date1);
+
+		
 		$SQL->execute();
 		$SQL->close();
 		$db_found->close();
