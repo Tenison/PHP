@@ -15,7 +15,7 @@ if (isset($_POST['Submit1'])){
 	$email = $_POST['email'];
 	$passW = $_POST['pass'];
 	$date1 = $_POST['date1'];
-	$_POST['membertest'] = 'membertest';
+	$_POST['membertest'] = 'membertest';//Or u can use CONSTANTS
 
 
 	$database = $_POST['membertest'];
